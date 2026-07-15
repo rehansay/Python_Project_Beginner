@@ -10,11 +10,12 @@ url=f"https://api.weatherapi.com/v1/current.json?key=9f478f52ae524eb286113003326
 
 r=requests.get(url)
 # print (r.text)
-wdic=json.loads(r.text)
-temp=wdic["current"]["temp_c"]
-feelsLike=wdic["current"]["feelslike_c"]
+data=json.loads(r.text)
+temp=data["current"]["temp_c"]
+feelsLike=data["current"]["feelslike_c"]
+condition=data["current"]["condition"]["text"]
 
-message=f"The current tempratur in {city} is {temp} degrees Celsius and it feels like {feelsLike} celsius" 
+message=f"The current tempratur in {city} is {temp} degrees Celsius and it feels like {feelsLike} celsius with {condition}" 
 speak.Speak(message)
 
 # print(f"\n📍 City: {data['location']['name']}")
